@@ -1,0 +1,16 @@
+[package]
+name = "alacritty-themer"
+version = "0.1.0"
+edition = "2021"
+
+[build-dependencies]
+serde = { version = "1.0.138", features = ["derive"] }
+serde_yaml = "0.8.24"
+uneval = "0.2.4"
+
+[dependencies]
+color-eyre = "0.6.1"
+dialoguer = { version = "0.10.1", features = ["fuzzy-select"] }
+dirs = "4.0.0"
+serde = { version = "1.0.138", features = ["derive"] }
+serde_yaml = "0.8.24"
