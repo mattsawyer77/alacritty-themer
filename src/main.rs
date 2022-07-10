@@ -1,22 +1,47 @@
-use color_eyre::{eyre::eyre, Result};
+use color_eyre::{eyre::bail, Result};
+use crossbeam_channel::{unbounded, Receiver, Sender};
+use std::thread;
+use themes::ThemeWrapper;
 
 mod alacritty;
+mod select;
 mod themes;
 
 fn main() -> Result<()> {
-    let _theme_map = themes::get_themes();
-    let mut alacritty_config_file = alacritty::get_config_file().unwrap();
-    let alacritty_config = alacritty_config_file
-        .as_mapping_mut()
-        .ok_or_else(|| eyre!("unable to understand alacritty config file structure"))?;
-    let maybe_current_colors =
-        alacritty_config.get_mut(&serde_yaml::Value::String("colors".into()));
-    match &maybe_current_colors {
-        Some(current_colors) => println!("current colors: {:#?}", &current_colors),
-        None => println!("no current colors found in config"),
+    let theme_map = themes::get_themes();
+    let (preview_tx, preview_rx): (Sender<Option<ThemeWrapper>>, Receiver<Option<ThemeWrapper>>) =
+        unbounded();
+    let original_config = alacritty::get_config_raw()?;
+    let thread_original_config = original_config.clone();
+    let handle = thread::spawn(move || {
+        while let Ok(maybe_theme) = preview_rx.recv() {
+            match maybe_theme {
+                Some(theme) => {
+                    let _ = alacritty::update_theme(&theme);
+                }
+                None => {
+                    let _ = alacritty::set_config_str(&thread_original_config);
+                }
+            }
+        }
+    });
+    let select_result = select::select_theme(&theme_map, Some(preview_tx));
+    handle.join().unwrap();
+    match select_result {
+        Ok(result) => match result {
+            Some((theme_name, theme_wrapper)) => {
+                eprintln!("theme updated to {}", &theme_name);
+                let _ = alacritty::update_theme(&theme_wrapper);
+                Ok(())
+            }
+            None => {
+                let _ = alacritty::set_config_str(&original_config);
+                Ok(())
+            }
+        },
+        Err(err) => {
+            let _ = alacritty::set_config_str(&original_config);
+            bail!(err)
+        }
     }
-    // for (name, _theme) in theme_map.iter() {
-    //     println!("theme: {}", name);
-    // }
-    Ok(())
 }

@@ -10,7 +10,11 @@ uneval = "0.2.4"
 
 [dependencies]
 color-eyre = "0.6.1"
-dialoguer = { version = "0.10.1", features = ["fuzzy-select"] }
+crossbeam-channel = "0.5.5"
+# console = "0.15.0"
+# dialoguer = { version = "0.10.1", features = ["fuzzy-select"] }
 dirs = "4.0.0"
 serde = { version = "1.0.138", features = ["derive"] }
 serde_yaml = "0.8.24"
+skim = "0.9.4"
+tuikit = "0.4.6"

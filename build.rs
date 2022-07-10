@@ -16,9 +16,13 @@ const THEMES_OUT_DIR: &str = "themes_out";
 pub struct Primary {
     pub background: String,
     pub foreground: String,
+    #[serde(default)]
     pub dim_foreground: Option<String>,
+    #[serde(default)]
     pub bright_foreground: Option<String>,
+    #[serde(default)]
     pub dim_background: Option<String>,
+    #[serde(default)]
     pub bright_background: Option<String>,
 }
 
@@ -36,7 +40,9 @@ pub struct Colors {
 
 #[derive(Clone, Deserialize, Serialize)]
 pub struct Cursor {
+    #[serde(default)]
     pub text: Option<String>,
+    #[serde(default)]
     pub cursor: Option<String>,
 }
 
@@ -75,7 +81,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         })
         .collect();
     if !theme_files.is_empty() {
-        let themes: HashMap<String, Theme> = theme_files
+        let themes: HashMap<String, ThemeWrapper> = theme_files
             .iter()
             .filter_map(|filename| {
                 println!("parsing theme file {:?}...", filename);
@@ -92,7 +98,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                             .to_str()
                             .unwrap()
                             .replace(".yml", "");
-                        Some((name, parsed.colors.to_owned()))
+                        parsed.name = Some(name.to_owned());
+                        let theme_wrapper = parsed.to_owned();
+                        Some((name, theme_wrapper))
                     }
                     Err(err) => {
                         eprintln!(
