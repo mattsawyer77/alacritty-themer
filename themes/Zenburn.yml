@@ -1,27 +1,32 @@
+---
+name: Zenburn
 colors:
-  name: zenburn
-  author: ""
   primary:
-    background: "#000000"
+    background: "#333333"
     foreground: "#ffffff"
+    dim_foreground: ~
+    bright_foreground: "#ffffff"
+    dim_background: ~
+    bright_background: "#555555"
   cursor:
     text: "#000000"
-    cursor: "#ffffff"
+    cursor: "#00ff00"
   normal:
-    black: "#1e2320"
-    red: "#705050"
-    green: "#60b48a"
-    yellow: "#dfaf8f"
-    blue: "#506070"
-    magenta: "#dc8cc3"
-    cyan: "#8cd0d3"
-    white: "#dcdccc"
+    black: "#4d4d4d"
+    red: "#bb0000"
+    green: "#98f898"
+    yellow: "#f0e68c"
+    blue: "#96853f"
+    magenta: "#ffdead"
+    cyan: "#ffa0a0"
+    white: "#f5deb3"
   bright:
-    black: "#709080"
-    red: "#dca3a3"
-    green: "#c3bf9f"
-    yellow: "#f0dfaf"
-    blue: "#94bff3"
-    magenta: "#ec93d3"
-    cyan: "#93e0e3"
+    black: "#555555"
+    red: "#ff5555"
+    green: "#55ff55"
+    yellow: "#ffff55"
+    blue: "#87ceeb"
+    magenta: "#ff55ff"
+    cyan: "#ffd700"
     white: "#ffffff"
+  dim: ~

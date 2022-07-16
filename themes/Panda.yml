@@ -1,29 +1,30 @@
-# Colors (Panda)
+---
+name: Panda
 colors:
-  cursor:
-    text: "#fefff2"
-    cursor: "#ffb86c"
-  selection:
-    text: "#e6e6e6"
-    background: "#555555"
   primary:
-    background: "#292a2b"
-    foreground: "#e6e6e6"
+    background: "#292A2B"
+    foreground: "#E6E6E6"
+    dim_foreground: ~
+    bright_foreground: ~
+    dim_background: ~
+    bright_background: ~
+  cursor: ~
   normal:
-    black: "#292a2b"
-    red: "#ff2c6d"
+    black: "#292A2B"
+    red: "#FF2C6D"
     green: "#19f9d8"
-    yellow: "#ffb86c"
-    blue: "#45a9f9"
-    magenta: "#ff75b5"
-    cyan: "#6fc1ff"
-    white: "#e6e6e6"
+    yellow: "#FFB86C"
+    blue: "#45A9F9"
+    magenta: "#FF75B5"
+    cyan: "#67d3c2"
+    white: "#E6E6E6"
   bright:
-    black: "#555555"
-    red: "#ff2c6d"
+    black: "#292A2B"
+    red: "#FF2C6D"
     green: "#19f9d8"
     yellow: "#ffcc95"
-    blue: "#6fc1ff"
-    magenta: "#ff9ac1"
-    cyan: "#6fc1ff"
+    blue: "#6FC1FF"
+    magenta: "#FF9AC1"
+    cyan: "#67d3c2"
     white: "#ffffff"
+  dim: ~

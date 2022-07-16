@@ -1,28 +1,30 @@
-# Colors (Tender)
+---
+name: Tender
 colors:
-  # Default colors
   primary:
-    background: '#282828'
-    foreground: '#eeeeee'
-
-  # Normal colors
+    background: "#282828"
+    foreground: "#eeeeee"
+    dim_foreground: ~
+    bright_foreground: ~
+    dim_background: ~
+    bright_background: ~
+  cursor: ~
   normal:
-    black:   '#282828'
-    red:     '#f43753'
-    green:   '#c9d05c'
-    yellow:  '#ffc24b'
-    blue:    '#b3deef'
-    magenta: '#d3b987'
-    cyan:    '#73cef4'
-    white:   '#eeeeee'
-
-  # Bright colors
+    black: "#282828"
+    red: "#f43753"
+    green: "#c9d05c"
+    yellow: "#ffc24b"
+    blue: "#b3deef"
+    magenta: "#d3b987"
+    cyan: "#73cef4"
+    white: "#eeeeee"
   bright:
-    black:   '#4c4c4c'
-    red:     '#f43753'
-    green:   '#c9d05c'
-    yellow:  '#ffc24b'
-    blue:    '#b3deef'
-    magenta: '#d3b987'
-    cyan:    '#73cef4'
-    white:   '#feffff'
+    black: "#4c4c4c"
+    red: "#f43753"
+    green: "#c9d05c"
+    yellow: "#ffc24b"
+    blue: "#b3deef"
+    magenta: "#d3b987"
+    cyan: "#73cef4"
+    white: "#feffff"
+  dim: ~
